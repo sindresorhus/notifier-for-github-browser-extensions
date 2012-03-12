@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" id="http://sindresorhus.com/GitHub-Notifier" version="1.0">
+	<name>GitHub Notifier</name>
+	<description>Displays your GitHub notifications unread count</description>
+  	<author href="http://sindresorhus.com" email="sindresorhus@gmail.com">Sindre Sorhus</author>
+  	<icon src="icon-64.png" />
+  	<icon src="icon-18.png" />
+  	<access origin="https://github.com" />
+  	<feature name="opera:share-cookies" />
+</widget>
