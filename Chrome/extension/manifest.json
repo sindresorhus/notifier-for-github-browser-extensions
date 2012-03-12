@@ -1,7 +1,7 @@
 {
 	"name": "GitHub Notifier",
-	"description": "Notifies you about new events on GitHub",
-	"version": "1.0.1",
+	"description": "Displays your GitHub notifications unread count",
+	"version": "1.0.2",
 	"background_page": "background.html",
 	"permissions": [
 		"https://github.com/"
