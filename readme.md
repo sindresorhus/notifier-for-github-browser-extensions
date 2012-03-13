@@ -1,10 +1,16 @@
-# GitHub Notifier
+# ![GitHub Notifier](https://github.com/sindresorhus/GitHub-Notifier/raw/master/Chrome/promotional.png)
 
-Chrome extension that notifies you about new events on GitHub
+Extension that displays your GitHub notifications unread count
 
-### [Get it on the Chrome Web Store](https://chrome.google.com/webstore/detail/lmjdlojahmbbcodnpecnjnmlddbkjhnn)
 
-[![screenshot](https://github.com/sindresorhus/GitHub-Notifier/raw/master/screenshot-readme.png)](https://chrome.google.com/webstore/detail/lmjdlojahmbbcodnpecnjnmlddbkjhnn)
+## Available on
+
+- [Chrome](https://chrome.google.com/webstore/detail/lmjdlojahmbbcodnpecnjnmlddbkjhnn)
+
+- [Opera](https://addons.opera.com/en/addons/extensions/details/github-notifier/)
+
+
+![screenshot](https://github.com/sindresorhus/GitHub-Notifier/raw/master/screenshot-readme.png)
 
 
 ## License
