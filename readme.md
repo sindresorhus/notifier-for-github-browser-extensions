@@ -1,4 +1,4 @@
-# ![GitHub Notifier](https://github.com/sindresorhus/GitHub-Notifier/raw/master/Chrome/promotional.png)
+# GitHub Notifier
 
 Extension that displays your GitHub notifications unread count
 
