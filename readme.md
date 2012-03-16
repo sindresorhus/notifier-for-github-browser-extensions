@@ -1,11 +1,13 @@
 # GitHub Notifier
 
-Extension that displays your GitHub notifications unread count
+Browser extension that displays your GitHub notifications unread count
 
 
 ## Available on
 
 - [Chrome](https://chrome.google.com/webstore/detail/lmjdlojahmbbcodnpecnjnmlddbkjhnn)
+
+- [Firefox](https://addons.mozilla.org/en-US/firefox/addon/github-notifier/)
 
 - [Opera](https://addons.opera.com/en/addons/extensions/details/github-notifier/)
 
