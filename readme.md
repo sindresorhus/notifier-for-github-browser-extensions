@@ -11,8 +11,10 @@ Browser extension that displays your GitHub notifications unread count
 
 - [Opera](https://addons.opera.com/en/addons/extensions/details/github-notifier/)
 
+- [Safari](https://github.com/sindresorhus/GitHub-Notifier/blob/master/Safari/GitHub%20Notifier.safariextz) *(direct download)*
 
-![screenshot](https://github.com/sindresorhus/GitHub-Notifier/raw/master/screenshot-readme.png)
+
+![screenshot](https://github.com/sindresorhus/GitHub-Notifier/raw/master/screenshot.png)
 
 
 ## License
