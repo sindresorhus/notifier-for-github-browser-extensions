@@ -1,6 +1,9 @@
+'use strict';
+
 const badge = document.getElementById('badge');
 
-self.port.on('parse', function( data ) {
+
+self.port.on('render', function( data ) {
 	var tmp = document.createElement('div');
 	tmp.innerHTML = unescape( data );
 	var notifElem = tmp.querySelector('#notifications');
@@ -13,9 +16,12 @@ self.port.on('parse', function( data ) {
 		} else {
 			badge.style.display = 'none';
 		}
+		self.port.emit( 'success', true );
 	} else {
 		badge.style.display = 'block';
 		badge.textContent = ':(';
 		badge.classList.add('error');
+		self.port.emit( 'success', false );
 	}
+	self.port.emit( 'update-widget-width', badge.scrollWidth );
 });

@@ -2,7 +2,7 @@
 	"name": "github-notifier",
 	"license": "MIT",
 	"author": "Sindre Sorhus (http://sindresorhus) <sindresorhus@gmail.com>",
-	"version": "1.0",
+	"version": "1.0.1",
 	"fullName": "GitHub Notifier",
 	"id": "jid1-DMjSwVBPnk7a1Q",
 	"description": "Displays your GitHub notifications unread count",
