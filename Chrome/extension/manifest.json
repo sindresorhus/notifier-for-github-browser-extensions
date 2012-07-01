@@ -1,8 +1,13 @@
 {
 	"name": "GitHub Notifier",
 	"description": "Displays your GitHub notifications unread count",
-	"version": "1.0.2",
-	"background_page": "background.html",
+	"version": "1.0.3",
+	"background": {
+		"scripts": [
+			"api.js",
+			"main.js"
+		]
+	},
 	"permissions": [
 		"https://github.com/"
 	],
@@ -14,5 +19,6 @@
 		"48": "icon-48.png",
 		"128": "icon-128.png"
 	},
-	"minimum_chrome_version": "16"
+	"minimum_chrome_version": "18",
+	"manifest_version": 2
 }
