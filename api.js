@@ -15,19 +15,19 @@
 	}();
 
 	window.gitHubNotifCount = function( callback ) {
-		var NOTIFICATIONS_URL = 'https://github.com/inbox/notifications';
+		var NOTIFICATIONS_URL = 'https://github.com/notifications';
 		var tmp = document.createElement('div');
+
 		xhr( 'GET', NOTIFICATIONS_URL, function( data ) {
+			var countElem;
 			tmp.innerHTML = data;
-			var notifElem = tmp.querySelector('#notifications');
-			if ( notifElem ) {
-				var countElem = notifElem.querySelector('.unread_count');
-				var count = countElem ? countElem.textContent : '';
-				callback( count );
+			countElem = tmp.querySelector('.big li:first-child .count');
+
+			if ( countElem ) {
+				callback( countElem.textContent !== '0' ? countElem.textContent : '' );
 			} else {
 				callback( false );
 			}
 		});
 	};
-
 })();
