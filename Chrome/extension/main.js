@@ -17,7 +17,7 @@
 	function update() {
 		gitHubNotifCount(function( count ) {
 			if ( count !== false ) {
-				render( count, [203, 108, 0, 255], 'GitHub Notifier' );
+				render( count, [65, 131, 196, 255], 'GitHub Notifier' );
 			} else {
 				render( ':(', [166, 41, 41, 255], 'You have to be connected to the internet and logged into GitHub' );
 			}
@@ -29,7 +29,7 @@
 	setInterval( update, UPDATE_INTERVAL );
 
 	chrome.browserAction.onClicked.addListener(function() {
-		window.open('https://github.com/inbox/notifications');
+		window.open('https://github.com/notifications');
 	});
 
 	update();
