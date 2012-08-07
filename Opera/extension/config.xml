@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="http://sindresorhus.com/GitHub-Notifier" version="1.0" defaultlocale="en" xml:lang="en">
+<widget xmlns="http://www.w3.org/ns/widgets" id="http://sindresorhus.com/GitHub-Notifier" version="1.0.1" defaultlocale="en" xml:lang="en">
 	<name xml:lang="en">GitHub Notifier</name>
 	<name xml:lang="nb">GitHub varsler</name>
 	<description xml:lang="en">Displays your GitHub notifications unread count</description>
