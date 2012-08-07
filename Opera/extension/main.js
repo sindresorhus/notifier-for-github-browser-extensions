@@ -1,4 +1,4 @@
-/*globals opera:true, gitHubNotifCount:true*/
+/*globals opera, gitHubNotifCount */
 (function() {
 	'use strict';
 
@@ -13,7 +13,7 @@
 	function update() {
 		gitHubNotifCount(function( count ) {
 			if ( count !== false ) {
-				render( count, 'rgba(203, 108, 0, 1)', button.title );
+				render( count, 'rgba(65, 131, 196, 1)', button.title );
 			} else {
 				render( ':(', 'rgba(166, 41, 41, 1)', 'You have to be connected to the internet and logged into GitHub' );
 			}
