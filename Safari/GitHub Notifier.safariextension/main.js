@@ -1,4 +1,4 @@
-/*globals safari:true, gitHubNotifCount:true*/
+/*globals safari, gitHubNotifCount */
 (function() {
 	'use strict';
 
@@ -24,7 +24,7 @@
 	safari.application.addEventListener('command', function( e ) {
 		if  ( e.command === 'open-notifications' ) {
 			var win = safari.application.activeBrowserWindow;
-			var url = 'https://github.com/inbox/notifications';
+			var url = 'https://github.com/notifications';
 			if ( win.activeTab.url ) {
 				win.openTab().url = url;
 			} else {
