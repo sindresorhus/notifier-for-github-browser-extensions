@@ -4,12 +4,14 @@ const badge = document.getElementById('badge');
 
 
 self.port.on('render', function( data ) {
+	var countElem;
 	var tmp = document.createElement('div');
+
 	tmp.innerHTML = unescape( data );
-	var notifElem = tmp.querySelector('#notifications');
-	if ( notifElem ) {
-		var countElem = notifElem.querySelector('.unread_count');
-		if ( countElem ) {
+	countElem = tmp.querySelector('.big li:first-child .count');
+
+	if ( countElem ) {
+		if ( countElem.textContent !== '0' ) {
 			badge.style.display = 'block';
 			badge.textContent = countElem.textContent;
 			badge.classList.remove('error');
