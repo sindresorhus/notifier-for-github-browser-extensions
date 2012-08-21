@@ -21,7 +21,7 @@
 		xhr( 'GET', NOTIFICATIONS_URL, function( data ) {
 			var countElem;
 			tmp.innerHTML = data;
-			countElem = tmp.querySelector('.big li:first-child .count');
+			countElem = tmp.querySelector('a[href="/notifications"] .count');
 
 			if ( countElem ) {
 				callback( countElem.textContent !== '0' ? countElem.textContent : '' );

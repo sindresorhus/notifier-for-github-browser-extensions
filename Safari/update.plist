@@ -10,9 +10,9 @@
 			<key>Developer Identifier</key>
 			<string>YG56YK5RN5</string>
 			<key>CFBundleVersion</key>
-			<string>1.0.1</string>
+			<string>1.0.2</string>
 			<key>CFBundleShortVersionString</key>
-			<string>1.0.1</string>
+			<string>1.0.2</string>
 			<key>URL</key>
 			<string>https://github.com/sindresorhus/GitHub-Notifier/raw/master/Safari/GitHub Notifier.safariextz</string>
 		</dict>

@@ -8,7 +8,7 @@ self.port.on('render', function( data ) {
 	var tmp = document.createElement('div');
 
 	tmp.innerHTML = unescape( data );
-	countElem = tmp.querySelector('.big li:first-child .count');
+	countElem = tmp.querySelector('a[href="/notifications"] .count');
 
 	if ( countElem ) {
 		if ( countElem.textContent !== '0' ) {
