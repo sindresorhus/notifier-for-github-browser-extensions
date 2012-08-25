@@ -28,7 +28,7 @@
 				<key>Identifier</key>
 				<string>toolbar-button</string>
 				<key>Image</key>
-				<string>icon-16.png</string>
+				<string>toolbar-icon.png</string>
 				<key>Label</key>
 				<string>GitHub Notifier</string>
 			</dict>
