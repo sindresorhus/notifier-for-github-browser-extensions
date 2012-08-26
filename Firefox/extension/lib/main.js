@@ -1,58 +1,76 @@
 'use strict';
 
-const widgets = require('widget');
 const tabs = require('tabs');
 const data = require('self').data;
 const Request = require('request').Request;
 const pageWorker = require('page-worker');
 const timers = require('timers');
+const toolbarButton = require('toolbarbutton/toolbarbutton').ToolbarButton;
 
-const notifUrl = 'https://github.com/inbox/notifications';
+const notifUrl = 'https://github.com/notifications';
 const updateInterval = 1000 * 60;
 
 
-var widget = widgets.Widget({
+function update() {
+	Request({
+		url: notifUrl,
+		onComplete: function( response ) {
+			worker.port.emit( 'render', response.text );
+		}
+		// Need to add a check if the computer is connected to the internet.
+		// Waiting on a `onError` method.
+	}).get();
+};
+
+let worker = pageWorker.Page({
+	contentScriptFile: data.url('icon.js')
+});
+
+let tbb = toolbarButton({
 	id: 'github-notifier',
 	label: 'GitHub Notifier',
-	width: 11 + 16 + 1, // sadface + icon + 1px needed for unknown reason
-	contentURL: data.url('icon.html'),
-	contentScriptFile: data.url('icon.js'),
-	onClick: function() {
+	tooltiptext: this.label,
+	image: data.url('icon-16.png'),
+	onCommand: function () {
 		const tab = tabs.activeTab;
-		if ( tab.url === 'about:blank' || tab.url === notifUrl ) {
+
+		if ( tab.url === 'about:blank' || tab.url === 'about:newtab' || tab.url === notifUrl ) {
 			tab.url = notifUrl;
 		} else {
 			tabs.open( notifUrl );
 		}
+
 		timers.setTimeout( update, 1000 * 20 );
 		update();
 	}
 });
 
-widget.port.on('update-widget-width', function( badgeWidth ) {
-	const iconWidth = 16;
-	widget.width = badgeWidth + iconWidth + 1;
+tbb.moveTo({
+	toolbarID: 'nav-bar',
+	forceMove: false // only move from palette
 });
 
-widget.port.on('success', function( status ) {
-	const errorMsg = 'You have to be logged into GitHub';
-	widget.tooltip = status ? '' : errorMsg;
-});
+worker.port.on('fetched-count', function( count ) {
+	count = count > 999 ? '∞' : count;
 
-var update = function() {
-	Request({
-		url: notifUrl,
-		onComplete: function( response ) {
-			widget.port.emit( 'render', response.text );
+	if ( count ) {
+		tbb.tooltiptext = 'GitHub Notifier';
+		if ( count !== '0' ) {
+			tbb.badge = {
+				text: count,
+				color: 'rgb(65, 131, 196)'
+			}
+		} else {
+			tbb.badge = null;
 		}
-		// TODO: Need to add a check if the computer is connected to the internet.
-		// Waiting on a `onError` method.
-	}).get();
-}
+	} else {
+		tbb.tooltiptext = 'You have to be logged into GitHub';
+		tbb.badge = {
+			text: ':(',
+			color: 'rgb(166, 41, 41)'
+		}
+	}
+});
 
-var init = function() {
-	timers.setInterval( update, updateInterval );
-	update();
-};
-
-init();
+timers.setInterval( update, updateInterval );
+update();
