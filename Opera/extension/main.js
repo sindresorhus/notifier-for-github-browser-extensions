@@ -11,13 +11,17 @@
 	}
 
 	function update() {
-		gitHubNotifCount(function( count ) {
-			if ( count !== false ) {
-				render( count, 'rgba(65, 131, 196, 1)', button.title );
-			} else {
-				render( ':(', 'rgba(166, 41, 41, 1)', 'You have to be connected to the internet and logged into GitHub' );
-			}
-		});
+		if ( window.navigator.onLine ) {
+			gitHubNotifCount(function( count ) {
+				if ( count !== false ) {
+					render( count, 'rgba(65, 131, 196, 1)', button.title );
+				} else {
+					render( ':(', 'rgba(166, 41, 41, 1)', 'You have to be connected to the internet and logged into GitHub' );
+				}
+			});
+		} else {
+			render( ':(', 'rgba(166, 41, 41, 1)', 'You have to be connected to the internet' );
+		}
 	}
 
 	var UPDATE_INTERVAL = 1000 * 60;
@@ -40,5 +44,4 @@
 	setInterval( update, UPDATE_INTERVAL );
 
 	update();
-
 })();
