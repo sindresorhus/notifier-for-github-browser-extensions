@@ -1,47 +1,39 @@
-/*globals opera, gitHubNotifCount */
+/*globals chrome:true, gitHubNotifCount:true */
 (function () {
 	'use strict';
 
-	function render(badgeText, color, title) {
-		var badge = button.badge;
-		badge.textContent = badgeText;
-		badge.backgroundColor = color;
-		badge.display = 'block';
-		button.title = title;
+	function render(badge, color, title) {
+		chrome.browserAction.setBadgeText({
+			text: badge
+		});
+
+		chrome.browserAction.setBadgeBackgroundColor({
+			color: color
+		});
+
+		chrome.browserAction.setTitle({
+			title: title
+		});
 	}
 
 	function update() {
-		if (window.navigator.onLine) {
-			gitHubNotifCount(function (count) {
-				if (count !== false) {
-					render(count, 'rgba(65, 131, 196, 1)', button.title);
-				} else {
-					render(':(', 'rgba(166, 41, 41, 1)', 'You have to be connected to the internet and logged into GitHub');
-				}
-			});
-		} else {
-			render(':(', 'rgba(166, 41, 41, 1)', 'You have to be connected to the internet');
-		}
+		gitHubNotifCount(function (count) {
+			if (count !== false) {
+				render(count, [65, 131, 196, 255], 'GitHub Notifier');
+			} else {
+				render(':(', [166, 41, 41, 255], 'You have to be connected to the internet and logged into GitHub');
+			}
+		});
 	}
 
-	var UPDATE_INTERVAL = 1000 * 60;
+	chrome.alarms.create({periodInMinutes: 1});
+	chrome.alarms.onAlarm.addListener(update);
 
-	var button = opera.contexts.toolbar.createItem({
-		title: 'GitHub Notifier',
-		icon: 'icon-18.png',
-		onclick: function () {
-			opera.extension.tabs.create({
-				url: 'https://github.com/inbox/notifications',
-				focused: true
-			});
-		},
-		// Must be specified, otherwise it won't show
-		badge: {}
+	chrome.browserAction.onClicked.addListener(function () {
+		chrome.tabs.create({
+			url: 'https://github.com/notifications'
+		});
 	});
-
-	opera.contexts.toolbar.addItem(button);
-
-	setInterval(update, UPDATE_INTERVAL);
 
 	update();
 })();
