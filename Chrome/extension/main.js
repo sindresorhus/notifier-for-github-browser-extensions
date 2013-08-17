@@ -26,9 +26,8 @@
 		});
 	}
 
-	var UPDATE_INTERVAL = 1000 * 60;
-
-	setInterval(update, UPDATE_INTERVAL);
+	chrome.alarms.create({periodInMinutes: 1});
+	chrome.alarms.onAlarm.addListener(update);
 
 	chrome.browserAction.onClicked.addListener(function () {
 		window.open('https://github.com/notifications');
