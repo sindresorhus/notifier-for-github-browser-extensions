@@ -1,8 +1,8 @@
 /*globals opera, gitHubNotifCount */
-(function() {
+(function () {
 	'use strict';
 
-	function render( badgeText, color, title ) {
+	function render(badgeText, color, title) {
 		var badge = button.badge;
 		badge.textContent = badgeText;
 		badge.backgroundColor = color;
@@ -11,16 +11,16 @@
 	}
 
 	function update() {
-		if ( window.navigator.onLine ) {
-			gitHubNotifCount(function( count ) {
-				if ( count !== false ) {
-					render( count, 'rgba(65, 131, 196, 1)', button.title );
+		if (window.navigator.onLine) {
+			gitHubNotifCount(function (count) {
+				if (count !== false) {
+					render(count, 'rgba(65, 131, 196, 1)', button.title);
 				} else {
-					render( ':(', 'rgba(166, 41, 41, 1)', 'You have to be connected to the internet and logged into GitHub' );
+					render(':(', 'rgba(166, 41, 41, 1)', 'You have to be connected to the internet and logged into GitHub');
 				}
 			});
 		} else {
-			render( ':(', 'rgba(166, 41, 41, 1)', 'You have to be connected to the internet' );
+			render(':(', 'rgba(166, 41, 41, 1)', 'You have to be connected to the internet');
 		}
 	}
 
@@ -29,7 +29,7 @@
 	var button = opera.contexts.toolbar.createItem({
 		title: 'GitHub Notifier',
 		icon: 'icon-18.png',
-		onclick: function() {
+		onclick: function () {
 			opera.extension.tabs.create({
 				url: 'https://github.com/inbox/notifications',
 				focused: true
@@ -39,9 +39,9 @@
 		badge: {}
 	});
 
-	opera.contexts.toolbar.addItem( button );
+	opera.contexts.toolbar.addItem(button);
 
-	setInterval( update, UPDATE_INTERVAL );
+	setInterval(update, UPDATE_INTERVAL);
 
 	update();
 })();
