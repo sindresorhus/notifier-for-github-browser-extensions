@@ -1,6 +1,6 @@
 # GitHub Notifier
 
-Browser extension that displays your GitHub notifications unread count
+Browser extension that displays your GitHub notifications unread count.
 
 
 ## Available on
@@ -19,5 +19,4 @@ Browser extension that displays your GitHub notifications unread count
 
 ## License
 
-[MIT License](http://en.wikipedia.org/wiki/MIT_License)
-(c) [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](http://sindresorhus.com)
