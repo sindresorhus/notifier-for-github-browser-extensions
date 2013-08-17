@@ -30,7 +30,9 @@
 	chrome.alarms.onAlarm.addListener(update);
 
 	chrome.browserAction.onClicked.addListener(function () {
-		window.open('https://github.com/notifications');
+		chrome.tabs.create({
+			url: 'https://github.com/notifications'
+		});
 	});
 
 	update();
