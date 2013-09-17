@@ -9,20 +9,17 @@
             });
         }
 
-
         if(color){
             chrome.browserAction.setBadgeBackgroundColor({
                 color: color
             });
         }
 
-
         if(title){
             chrome.browserAction.setTitle({
                 title: title
             });
         }
-
 
         if(icon){
             chrome.browserAction.setIcon({
