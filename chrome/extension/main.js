@@ -24,7 +24,7 @@
 				}
 				render(count, [65, 131, 196, 255], 'GitHub Notifier');
 			} else {
-				render('N/A', [166, 41, 41, 255], 'You have to be connected to the internet and logged into GitHub');
+				render('?', [166, 41, 41, 255], 'You have to be connected to the internet and logged into GitHub');
 			}
 		});
 	}
