@@ -1,4 +1,4 @@
-/*globals chrome:true, gitHubNotifCount:true */
+/*globals chrome:true, gitHubNotifCount:true, GitHubNotify:true */
 (function () {
 	'use strict';
 
@@ -31,7 +31,7 @@
 
 	chrome.browserAction.onClicked.addListener(function () {
 		chrome.tabs.create({
-			url: 'https://github.com/notifications'
+			url: GitHubNotify.settings.get('notification_url')
 		});
 	});
 
