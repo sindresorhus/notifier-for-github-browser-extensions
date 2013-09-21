@@ -38,5 +38,10 @@
 		});
 	});
 
+	chrome.webRequest.onCompleted.addListener(function (details) {
+			update();
+		}
+		, {urls: ["https://github.com/notifications/*"]});
+
 	update();
 })();

@@ -3,7 +3,7 @@
 	"description": "Displays your GitHub notifications unread count",
 	"version": "1.0.7",
 	"background": {
-		"persistent": false,
+		"persistent": true,
 		"scripts": [
 			"api.js",
 			"main.js"
@@ -11,7 +11,8 @@
 	},
 	"permissions": [
 		"alarms",
-		"https://github.com/"
+		"*://github.com/",
+		"webRequest"
 	],
 	"browser_action": {
 		"default_icon": "icon-19.png"
