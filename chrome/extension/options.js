@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	var form_notification_url = document.getElementById('notification_url');
 
 	function loadSettings(){
-		form_notification_url.value = GithubNotify.settings.get('notification_url');
+		form_notification_url.value = GitHubNotify.settings.get('notification_url');
 	}
 
 	loadSettings();

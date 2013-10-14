@@ -27,12 +27,11 @@
 				},
 				set: localStorage.setItem.bind(localStorage),
 				reset: function () {
-					Object.keys(localStorage).forEach(self.revert);
+					Object.keys(localStorage).forEach(self.settings.revert);
 				},
 				revert: localStorage.removeItem.bind(localStorage)
 			}
 	}})();
-
 
 	window.gitHubNotifCount = function (callback) {
 		var NOTIFICATIONS_URL = GitHubNotify.settings.get('notification_url');
