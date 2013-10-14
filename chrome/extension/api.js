@@ -14,33 +14,28 @@
 		};
 	}();
 
-	window.GitHubNotify = {
-		settings: {
-			defaults: {
-				'notification_url': 'http://github.com/notifications'
-			},
-			get: function (name) {
-				return window.localStorage.getItem(name) ? window.localStorage.getItem(name) : this.defaults[name];
-			},
-			set: function (name, value) {
-				return window.localStorage.setItem(name, value);
-			},
-			reset: function () {
-				return this.revert('notification_url');
-			},
-			revert: function (name) {
-				return window.localStorage.removeItem(name);
-			},
-			restore: {
-				text: function (element, name) {
-					return element.value = GitHubNotify.settings.get(name);
-				}
+	window.GitHubNotify = (function(){
+		var self;
+		var defaults = {
+			notification_url: 'http://github.com/notifications'
+		};
+		return self = {
+			settings: {
+				get: function (name) {
+					var item = localStorage.getItem(name);
+					return item == null ? ({}.hasOwnProperty.call(defaults, name) ? defaults[name] : void 0) : item;
+				},
+				set: localStorage.setItem.bind(localStorage),
+				reset: function () {
+					Object.keys(localStorage).forEach(self.revert);
+				},
+				revert: localStorage.removeItem.bind(localStorage)
 			}
-		}
-	};
+	}})();
+
 
 	window.gitHubNotifCount = function (callback) {
-		var NOTIFICATIONS_URL = GitHubNotify.settings.get('notification_url')
+		var NOTIFICATIONS_URL = GitHubNotify.settings.get('notification_url');
 		var tmp = document.createElement('div');
 
 		xhr('GET', NOTIFICATIONS_URL, function (data) {
