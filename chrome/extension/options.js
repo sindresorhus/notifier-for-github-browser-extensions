@@ -1,18 +1,36 @@
-document.addEventListener('DOMContentLoaded', function () {
-	var form_notification_url = document.getElementById('notification_url');
+/*globals chrome:true, GitHubNotify:true */
+(function () {
+    'use strict';
+    document.addEventListener('DOMContentLoaded', function () {
+        var formNotificationUrl = document.getElementById('notification_url');
 
-	function loadSettings(){
-		form_notification_url.value = GitHubNotify.settings.get('notification_url');
-	}
+        function loadSettings() {
+            formNotificationUrl.value = GitHubNotify.settings.get('notificationUrl');
+        }
 
-	loadSettings();
+        loadSettings();
 
-	document.getElementById('save').addEventListener('click', function () {
-		GitHubNotify.settings.set('notification_url', form_notification_url.value);
-	});
+        document.getElementById('save').addEventListener('click', function () {
+            chrome.permissions.request({
+                origins: [formNotificationUrl.value]
+            }, function (granted) {
+                if (granted) {
+                    chrome.permissions.remove({
+                        origins: [GitHubNotify.settings.get('notificationUrl')]
+                    });
+                    GitHubNotify.settings.set('notificationUrl', formNotificationUrl.value);
+                } else {
+                    loadSettings();
+                }
+            });
+        });
 
-	document.getElementById('reset').addEventListener('click', function () {
-		GitHubNotify.settings.reset();
-		loadSettings();
-	});
-});
+        document.getElementById('reset').addEventListener('click', function () {
+            chrome.permissions.remove({
+                origins: [GitHubNotify.settings.get('notificationUrl')]
+            });
+            GitHubNotify.settings.reset();
+            loadSettings();
+        });
+    });
+}());

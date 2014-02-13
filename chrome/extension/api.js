@@ -1,7 +1,8 @@
+/*globals GitHubNotify:true */
 (function () {
 	'use strict';
 
-	var xhr = function () {
+	var xhr = (function () {
 		var xhr = new XMLHttpRequest();
 		return function(method, url, callback) {
 			xhr.onreadystatechange = function () {
@@ -12,29 +13,30 @@
 			xhr.open(method, url);
 			xhr.send();
 		};
-	}();
+	})();
 
 	window.GitHubNotify = (function(){
-		var self;
 		var defaults = {
-			notification_url: 'http://github.com/notifications'
+			notificationUrl: 'http://github.com/notifications'
 		};
-		return self = {
-			settings: {
-				get: function (name) {
-					var item = localStorage.getItem(name);
-					return item == null ? ({}.hasOwnProperty.call(defaults, name) ? defaults[name] : void 0) : item;
-				},
-				set: localStorage.setItem.bind(localStorage),
-				reset: function () {
-					Object.keys(localStorage).forEach(self.settings.revert);
-				},
-				revert: localStorage.removeItem.bind(localStorage)
-			}
-	}})();
+		var api = {
+                settings: {
+                    get: function (name) {
+                        var item = localStorage.getItem(name);
+                        return item === null ? ({}.hasOwnProperty.call(defaults, name) ? defaults[name] : void 0) : item;
+                    },
+                    set: localStorage.setItem.bind(localStorage),
+                    reset: function () {
+                        Object.keys(localStorage).forEach(api.settings.revert);
+                    },
+                    revert: localStorage.removeItem.bind(localStorage)
+                }
+	        };
+        return api;
+    })();
 
 	window.gitHubNotifCount = function (callback) {
-		var NOTIFICATIONS_URL = GitHubNotify.settings.get('notification_url');
+		var NOTIFICATIONS_URL = GitHubNotify.settings.get('notificationUrl');
 		var tmp = document.createElement('div');
 
 		xhr('GET', NOTIFICATIONS_URL, function (data) {

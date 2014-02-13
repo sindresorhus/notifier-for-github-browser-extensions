@@ -34,7 +34,7 @@
 
 	chrome.browserAction.onClicked.addListener(function () {
 		chrome.tabs.create({
-			url: GitHubNotify.settings.get('notification_url')
+			url: GitHubNotify.settings.get('notificationUrl')
 		});
 	});
 
