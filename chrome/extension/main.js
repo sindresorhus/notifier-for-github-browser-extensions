@@ -37,5 +37,7 @@
 		});
 	});
 
+	chrome.webRequest.onCompleted.addListener(update, {urls: ['https://github.com/notifications']});
+
 	update();
 })();
