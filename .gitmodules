@@ -1,0 +1,3 @@
+[submodule "chrome/extension/chrome-bootstrap"]
+	path = chrome/extension/chrome-bootstrap
+	url = https://github.com/roykolak/chrome-bootstrap.git
